@@ -1,0 +1,19 @@
+{
+  "name": "gulp-starter",
+  "version": "1.0.0",
+  "description": "My simple starter kit for ES6 and SASS projects built with gulp.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evanlask/gulp-starter.git"
+  },
+  "author": "Evan Lask",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/evanlask/gulp-starter/issues"
+  },
+  "homepage": "https://github.com/evanlask/gulp-starter#readme"
+}
