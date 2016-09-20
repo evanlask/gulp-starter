@@ -10,13 +10,14 @@ module.exports = function(CONFIG, gulp) {
   const srcBuild = path.join(CONFIG.PATHS.SRC, CONFIG.PATHS.SCRIPTS, '**/*.build.js');
   const dist = path.join(CONFIG.PATHS.DIST, CONFIG.PATHS.SCRIPTS);
 
-  //gulp.task('lint-scripts', function() {
-  //  return gulp.src(srcAll)
-  //    .pipe(eslint(CONFIG.ESLINT_OPTIONS))
-  //    .pipe(eslint.format());
-  //});
+  gulp.task('lint-scripts', function(cb) {
+    //return gulp.src(srcAll)
+    //  .pipe(eslint(CONFIG.ESLINT_OPTIONS))
+    //  .pipe(eslint.format());
+    cb();
+  });
 
-  gulp.task('build-scripts', function() {
+  gulp.task('build-scripts', gulp.series('lint-scripts', function() {
     return gulp.src(srcBuild)
       .pipe(babel({
         presets: ['es2015']
@@ -28,7 +29,7 @@ module.exports = function(CONFIG, gulp) {
       .pipe(gulp.dest(dist))
       .pipe(size({ showFiles: true }))
       .pipe(browsersync.reload({ stream: true }));
-  });
+  }));
 
   gulp.task('watch-scripts', function(cb) {
     gulp.watch(srcAll, gulp.series('build-scripts'));
