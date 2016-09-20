@@ -1,1 +1,1 @@
-{"version":3,"sources":["example.scss"],"names":[],"mappings":"AAEA,UACE,eAHe,CAIhB","file":"example.css","sourcesContent":["$background: pink;\n\nhtml, body {\n  background: $background;\n}\n"],"sourceRoot":"/source/"}
+{"version":3,"sources":["example.scss","_settings.scss"],"names":[],"mappings":"AAEA,UACE,eCHqB,CDItB","file":"example.css","sourcesContent":["@import 'settings';\n\nhtml, body {\n  background: $background-color;\n}\n","$background-color: pink;\n"],"sourceRoot":"/source/"}

@@ -1,5 +1,5 @@
-$background: pink;
+@import 'settings';
 
 html, body {
-  background: $background;
+  background: $background-color;
 }
