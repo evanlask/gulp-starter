@@ -6,6 +6,8 @@
     "STYLES": "styles",
     "MEDIA": "media"
   },
+  "PREFIX_BUILD": "build-",
+  "PREFIX_WATCH": "watch-",
   "AUTO_PREFIXER_OPTIONS": {
     "browsers": ["last 2 versions", "ie >= 10"]
   },
@@ -23,5 +25,13 @@
   "IMAGEMIN_OPTIONS": {
     "progressive": true,
     "interlaced": true
+  },
+  "ESLINT_OPTIONS": {
+    "parserOptions": {
+      "ecmaVersion": 6
+    },
+    "globals": {
+
+    }
   }
 }

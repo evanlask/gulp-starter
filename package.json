@@ -2,10 +2,6 @@
   "name": "gulp-starter",
   "version": "1.0.0",
   "description": "My simple starter kit for ES6 and SASS projects built with gulp.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/evanlask/gulp-starter.git"
@@ -23,9 +19,11 @@
     "gulp": "gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-babel": "^6.1.2",
+    "gulp-eslint": "^3.0.1",
     "gulp-filter": "^4.0.0",
     "gulp-htmlmin": "^2.0.0",
     "gulp-imagemin": "^3.0.3",
+    "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
     "gulp-size": "^2.1.0",
     "gulp-sourcemaps": "^1.6.0",

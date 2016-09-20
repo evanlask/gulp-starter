@@ -1,1 +1,1 @@
-{"version":3,"sources":["example.scss"],"names":[],"mappings":"AAEA,KACE,eAHe,CAIhB","file":"example.css","sourcesContent":["$background: pink;\n\nbody {\n  background: $background;\n}\n"],"sourceRoot":"/source/"}
+{"version":3,"sources":["example.scss"],"names":[],"mappings":"AAEA,UACE,eAHe,CAIhB","file":"example.css","sourcesContent":["$background: pink;\n\nhtml, body {\n  background: $background;\n}\n"],"sourceRoot":"/source/"}
