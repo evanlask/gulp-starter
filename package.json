@@ -12,6 +12,9 @@
     "url": "https://github.com/evanlask/gulp-starter/issues"
   },
   "homepage": "https://github.com/evanlask/gulp-starter#readme",
+  "engines" : {
+    "node" : ">=0.12.0"
+  },
   "devDependencies": {
     "babel-preset-es2015": "^6.14.0",
     "browser-sync": "^2.16.0",
