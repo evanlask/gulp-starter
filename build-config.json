@@ -1,0 +1,27 @@
+{
+  "PATHS": {
+    "SRC": "src",
+    "DIST": "dist",
+    "SCRIPTS": "scripts",
+    "STYLES": "styles",
+    "MEDIA": "media"
+  },
+  "AUTO_PREFIXER_OPTIONS": {
+    "browsers": ["last 2 versions", "ie >= 10"]
+  },
+  "SASS_OPTIONS": {
+    "outputStyle": "compressed"
+  },
+  "HTML_MIN_OPTIONS": {
+    "removeComments": true,
+    "collapseWhitespace": true,
+    "conservativeCollapse": true,
+    "removeTagWhitespace": true,
+    "removeRedundantAttributes": true,
+    "removeEmptyAttributes": true
+  },
+  "IMAGEMIN_OPTIONS": {
+    "progressive": true,
+    "interlaced": true
+  }
+}
