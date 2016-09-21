@@ -39,7 +39,7 @@ module.exports = function(CONFIG, gulp) {
         return path.join(CONFIG.PATHS.SRC, CONFIG.PATHS.SCRIPTS, file);
       });
 
-      // Create strem for this bundle
+      // Create stream
       return gulp.src(files)
         .pipe(sourcemaps.init())
         .pipe(concat(bundle.dest))

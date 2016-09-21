@@ -15,5 +15,5 @@ module.exports = function(CONFIG, gulp) {
   gulp.task('build', gulp.series.apply(this, buildTasks));
 
   // Create a task that calls all watch related tasks
-  gulp.task('watch', gulp.series.apply(this, watchTasks));
+  gulp.task('watch', gulp.parallel.apply(this, watchTasks));
 };
