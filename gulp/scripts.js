@@ -1,34 +1,19 @@
 module.exports = function(CONFIG, gulp) {
-  const babel = require('gulp-babel');
-  const browsersync = require('browser-sync');
-  //const eslint = require('gulp-eslint');
-  const path = require('path');
-  const rename = require('gulp-rename');
-  const size = require('gulp-size');
+  var browsersync = require('browser-sync');
+  var path = require('path');
+  var rename = require('gulp-rename');
+  var size = require('gulp-size');
 
-  const srcAll = path.join(CONFIG.PATHS.SRC, CONFIG.PATHS.SCRIPTS, '**/*.js');
-  const srcBuild = path.join(CONFIG.PATHS.SRC, CONFIG.PATHS.SCRIPTS, '**/*.build.js');
-  const dist = path.join(CONFIG.PATHS.DIST, CONFIG.PATHS.SCRIPTS);
+  var srcAll = path.join(CONFIG.PATHS.SRC, CONFIG.PATHS.SCRIPTS, '**/*.js');
+  var srcBuild = path.join(CONFIG.PATHS.SRC, CONFIG.PATHS.SCRIPTS, '**/*.build.js');
+  var dist = path.join(CONFIG.PATHS.DIST, CONFIG.PATHS.SCRIPTS);
 
   gulp.task('lint-scripts', function(cb) {
-    //return gulp.src(srcAll)
-    //  .pipe(eslint(CONFIG.ESLINT_OPTIONS))
-    //  .pipe(eslint.format());
     cb();
   });
 
-  gulp.task('build-scripts', gulp.series('lint-scripts', function() {
-    return gulp.src(srcBuild)
-      .pipe(babel({
-        presets: ['es2015']
-      }))
-      .pipe(rename(function(path) {
-        path.basename = path.basename.replace('.build', '.built');
-        return path;
-      }))
-      .pipe(gulp.dest(dist))
-      .pipe(size({ showFiles: true }))
-      .pipe(browsersync.reload({ stream: true }));
+  gulp.task('build-scripts', gulp.series('lint-scripts', function(cb) {
+    cb()
   }));
 
   gulp.task('watch-scripts', function(cb) {

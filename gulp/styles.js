@@ -1,15 +1,15 @@
 module.exports = function(CONFIG, gulp) {
-  const autoprefixer = require('gulp-autoprefixer');
-  const browsersync = require('browser-sync');
-  const filter = require('gulp-filter');
-  const gutil = require('gulp-util');
-  const path = require('path');
-  const sass = require('gulp-sass');
-  const size = require('gulp-size');
-  const sourcemaps = require('gulp-sourcemaps');
+  var autoprefixer = require('gulp-autoprefixer');
+  var browsersync = require('browser-sync');
+  var filter = require('gulp-filter');
+  var gutil = require('gulp-util');
+  var path = require('path');
+  var sass = require('gulp-sass');
+  var size = require('gulp-size');
+  var sourcemaps = require('gulp-sourcemaps');
 
-  const src = path.join(CONFIG.PATHS.SRC, CONFIG.PATHS.STYLES, '**/*.scss');
-  const dist = path.join(CONFIG.PATHS.DIST, CONFIG.PATHS.STYLES);
+  var src = path.join(CONFIG.PATHS.SRC, CONFIG.PATHS.STYLES, '**/*.scss');
+  var dist = path.join(CONFIG.PATHS.DIST, CONFIG.PATHS.STYLES);
 
   gulp.task('build-styles', function() {
     return gulp.src(src)

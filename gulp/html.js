@@ -1,11 +1,11 @@
 module.exports = function(CONFIG, gulp) {
-  const browsersync = require('browser-sync');
-  const htmlmin = require('gulp-htmlmin');
-  const path = require('path');
-  const size = require('gulp-size');
+  var browsersync = require('browser-sync');
+  var htmlmin = require('gulp-htmlmin');
+  var path = require('path');
+  var size = require('gulp-size');
 
-  const src = path.join(CONFIG.PATHS.SRC, '**/*.html');
-  const dist = path.join(CONFIG.PATHS.DIST);
+  var src = path.join(CONFIG.PATHS.SRC, '**/*.html');
+  var dist = path.join(CONFIG.PATHS.DIST);
 
   gulp.task('build-html', function(cb) {
     return gulp.src(src, { since: gulp.lastRun('build-html') })

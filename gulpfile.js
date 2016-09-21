@@ -1,5 +1,5 @@
-const CONFIG = require('./build-config');
-const gulp = require('gulp');
+var CONFIG = require('./build-config');
+var gulp = require('gulp');
 
 require('./gulp/scripts')(CONFIG, gulp);
 require('./gulp/styles')(CONFIG, gulp);

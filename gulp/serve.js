@@ -1,5 +1,5 @@
 module.exports = function(CONFIG, gulp) {
-  const browsersync = require('browser-sync');
+  var browsersync = require('browser-sync');
 
   gulp.task('serve', function(cb) {
     browsersync.init({

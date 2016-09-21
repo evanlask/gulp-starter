@@ -1,8 +1,8 @@
 module.exports = function(CONFIG, gulp) {
-  const del = require('del');
-  const path = require('path');
+  var del = require('del');
+  var path = require('path');
 
-  const dist = path.join(CONFIG.PATHS.DIST, '**/*');
+  var dist = path.join(CONFIG.PATHS.DIST, '**/*');
 
   gulp.task('clean-node', function() {
     return del(['node_modules']);

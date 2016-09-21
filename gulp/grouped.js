@@ -1,6 +1,6 @@
 module.exports = function(CONFIG, gulp) {
-  const buildTasks = ['clean'];
-  const watchTasks = [];
+  var buildTasks = ['clean'];
+  var watchTasks = [];
 
   for(var taskName in gulp._registry._tasks) {
     if(taskName.indexOf('build-') >= 0) {
