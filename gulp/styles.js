@@ -1,4 +1,8 @@
+// Tasks related to compilation of styles
 module.exports = function(CONFIG, gulp) {
+  var taskId = 'styles';
+
+  // Required modules
   var autoprefixer = require('gulp-autoprefixer');
   var browsersync = require('browser-sync');
   var filter = require('gulp-filter');
@@ -8,10 +12,12 @@ module.exports = function(CONFIG, gulp) {
   var size = require('gulp-size');
   var sourcemaps = require('gulp-sourcemaps');
 
+  // Paths
   var src = path.join(CONFIG.PATHS.SRC, CONFIG.PATHS.STYLES, '**/*.scss');
   var dist = path.join(CONFIG.PATHS.DIST, CONFIG.PATHS.STYLES);
 
-  gulp.task('build-styles', function() {
+  // Build styles
+  gulp.task(CONFIG.PREFIX_BUILD + taskId, function() {
     return gulp.src(src)
       .pipe(sourcemaps.init())
       .pipe(sass(CONFIG.SASS_OPTIONS).on('error', gutil.log))
@@ -23,8 +29,9 @@ module.exports = function(CONFIG, gulp) {
       .pipe(browsersync.reload({ stream: true }));
   });
 
-  gulp.task('watch-styles', function(cb) {
-    gulp.watch(src, gulp.series('build-styles'));
+  // Watch for style changes
+  gulp.task(CONFIG.PREFIX_WATCH + taskId, function(cb) {
+    gulp.watch(src, gulp.series(CONFIG.PREFIX_BUILD + taskId));
     cb();
   });
 };

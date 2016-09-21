@@ -7,6 +7,7 @@ require('./gulp/html')(CONFIG, gulp);
 require('./gulp/media')(CONFIG, gulp);
 require('./gulp/clean')(CONFIG, gulp);
 require('./gulp/serve')(CONFIG, gulp);
-
 require('./gulp/grouped')(CONFIG, gulp);
 require('./gulp/dev')(CONFIG, gulp);
+
+gulp.task('default', gulp.parallel(CONFIG.DEFAULT_TASK));

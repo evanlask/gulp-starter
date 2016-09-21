@@ -1,1 +1,2 @@
+// Utility funcitons
 module.exports = {};

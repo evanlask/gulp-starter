@@ -1,4 +1,5 @@
 {
+  "DEFAULT_TASK": "dev",
   "PATHS": {
     "SRC": "src",
     "DIST": "dist",
