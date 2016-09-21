@@ -17,21 +17,29 @@ module.exports = function(CONFIG, gulp) {
   var src = path.join(CONFIG.PATHS.SRC, CONFIG.PATHS.SCRIPTS, '**/*.js');
   var dist = path.join(CONFIG.PATHS.DIST, CONFIG.PATHS.SCRIPTS);
 
-  // Lint scripts
-  gulp.task('lint-' + taskId, function(cb) {
-    cb();
-  });
+  // Find bundles that contain a file
+  function find(file) {
+    return CONFIG.SCRIPT_BUNDLES.filter(function(bundle) {
+      // Bundle contains the file
+      if(bundle.files.indexOf(file) >= 0) {
+        return true;
+      }
 
-  // Build all script bundles
-  gulp.task(CONFIG.PREFIX_BUILD + taskId, function() {
-    // Create a stream for each script bundle
-    var streams = CONFIG.SCRIPT_BUNDLES.map(function(bundle) {
-      // Update files with SRC path
+      // Bundle does not contain the file
+      return false;
+    });
+  }
+
+  // Build the provided script bundle
+  function buildBundles(bundles) {
+    // Create a stream for each script bundle being built
+    var streams = bundles.map(function(bundle) {
+      // Appen path to scripts folder
       var files = bundle.files.map(function(file) {
         return path.join(CONFIG.PATHS.SRC, CONFIG.PATHS.SCRIPTS, file);
       });
 
-      // Start stream
+      // Create strem for this bundle
       return gulp.src(files)
         .pipe(sourcemaps.init())
         .pipe(concat(bundle.dest))
@@ -40,16 +48,28 @@ module.exports = function(CONFIG, gulp) {
         .pipe(gulp.dest(dist))
     });
 
-    // Merge streams in to one
+    // Merge all bundle streams in to one
     return es.merge(streams)
       .pipe(size({ showFiles: true }))
       .pipe(filter('**/*.js'))
       .pipe(browsersync.reload({ stream: true }))
+  }
+
+  // Build all script bundles
+  gulp.task(CONFIG.PREFIX_BUILD + taskId, function() {
+    return buildBundles(CONFIG.SCRIPT_BUNDLES);
   });
 
   // Watch for script changes
   gulp.task(CONFIG.PREFIX_WATCH + taskId, function(cb) {
-    gulp.watch(src, gulp.series(CONFIG.PREFIX_BUILD + taskId));
+    gulp.watch(src).on('change', function(filePath) {
+      // Make the path relative to scripts folder
+      var scriptFolderPath = path.join(CONFIG.PATHS.SRC, CONFIG.PATHS.SCRIPTS, '/');
+      var file = filePath.replace(scriptFolderPath, '');
+
+      // Build all bundles that contain the changed file
+      return buildBundles(find(file));
+    });
     cb();
   });
 };
