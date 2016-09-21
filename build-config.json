@@ -9,11 +9,11 @@
   },
   "PREFIX_BUILD": "build-",
   "PREFIX_WATCH": "watch-",
-  "AUTO_PREFIXER_OPTIONS": {
-    "browsers": ["last 2 versions", "ie >= 10"]
-  },
   "SASS_OPTIONS": {
     "outputStyle": "compressed"
+  },
+  "AUTO_PREFIXER_OPTIONS": {
+    "browsers": ["last 2 versions", "ie >= 10"]
   },
   "HTML_MIN_OPTIONS": {
     "removeComments": true,
@@ -27,12 +27,19 @@
     "progressive": true,
     "interlaced": true
   },
-  "ESLINT_OPTIONS": {
-    "parserOptions": {
-      "ecmaVersion": 6
-    },
-    "globals": {
-
-    }
-  }
+  "UGLIFY_OPTIONS": {
+    "preserveComments": "license"
+  },
+  "SCRIPT_BUNDLES": [{
+    "dest": "root.built.js",
+    "files": [
+      "root.js"
+    ]
+  },{
+    "dest": "folder/folder.built.js",
+    "files": [
+      "folder/folder.one.js",
+      "folder/folder.two.js"
+    ]
+  }]
 }

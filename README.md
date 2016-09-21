@@ -1,2 +1,2 @@
 # gulp-starter
-My simple starter kit for ES6 and SASS projects built with gulp.
+A simple starter kit for frontend projects using gulp for builds.
