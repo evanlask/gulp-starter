@@ -1,2 +1,2 @@
 # gulp-starter
-A simple starter kit for frontend projects using gulp for builds.
+A simple starter kit for frontend projects using gulp as a build system.
