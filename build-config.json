@@ -31,7 +31,20 @@
     "preserveComments": "license"
   },
   "JSHINT_OPTIONS": {
-
+    "bitwise": true,
+    "browser": true,
+    "curly": true,
+    "debug": true,
+    "devel": true,
+    "eqeqeq": true,
+    "forin": true,
+    "freeze": true,
+    "globals": {},
+    "noarg": true,
+    "noempty": true,
+    "nonbsp": true,
+    "undef": true,
+    "unused": true
   },
   "SCRIPT_BUNDLES": [{
     "dest": "root.built.js",
