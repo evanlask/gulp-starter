@@ -30,6 +30,9 @@
   "UGLIFY_OPTIONS": {
     "preserveComments": "license"
   },
+  "JSHINT_OPTIONS": {
+
+  },
   "SCRIPT_BUNDLES": [{
     "dest": "root.built.js",
     "files": [

@@ -7,6 +7,7 @@ module.exports = function(CONFIG, gulp) {
   var concat = require('gulp-concat');
   var es = require('event-stream');
   var filter = require('gulp-filter');
+  var jshint = require('gulp-jshint');
   var path = require('path');
   var rename = require('gulp-rename');
   var size = require('gulp-size');
@@ -30,7 +31,7 @@ module.exports = function(CONFIG, gulp) {
     });
   }
 
-  // Build the provided script bundle
+  // Build the provided script bundles
   function buildBundles(bundles) {
     // Create a stream for each script bundle being built
     var streams = bundles.map(function(bundle) {
@@ -41,6 +42,8 @@ module.exports = function(CONFIG, gulp) {
 
       // Create stream
       return gulp.src(files)
+        .pipe(jshint(CONFIG.JSHINT_OPTIONS))
+        .pipe(jshint.reporter('jshint-stylish'))
         .pipe(sourcemaps.init())
         .pipe(concat(bundle.dest))
         .pipe(uglify(CONFIG.UGLIFY_OPTIONS))
@@ -48,10 +51,11 @@ module.exports = function(CONFIG, gulp) {
         .pipe(gulp.dest(dist))
     });
 
-    // Merge all bundle streams in to one
+    // Merge all bundle streams in to a single stream
     return es.merge(streams)
       .pipe(size({ showFiles: true }))
       .pipe(filter('**/*.js'))
+      .pipe(size({ showFiles: true }))
       .pipe(browsersync.reload({ stream: true }))
   }
 
@@ -63,7 +67,7 @@ module.exports = function(CONFIG, gulp) {
   // Watch for script changes
   gulp.task(CONFIG.PREFIX_WATCH + taskId, function(cb) {
     gulp.watch(src).on('change', function(filePath) {
-      // Make the path relative to scripts folder
+      // Make sure the file path is relative to scripts folder
       var scriptFolderPath = path.join(CONFIG.PATHS.SRC, CONFIG.PATHS.SCRIPTS, '/');
       var file = filePath.replace(scriptFolderPath, '');
 
