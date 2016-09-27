@@ -48,11 +48,13 @@
   },
   "SCRIPT_BUNDLES": [{
     "dest": "root.built.js",
+    "lint": true,
     "files": [
       "root.js"
     ]
   },{
     "dest": "folder/folder.built.js",
+    "lint": true,
     "files": [
       "folder/folder.one.js",
       "folder/folder.two.js"
