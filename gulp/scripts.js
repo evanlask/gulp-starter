@@ -22,8 +22,13 @@ module.exports = function(CONFIG, gulp) {
   // Find bundles that contain a file
   function find(file) {
     return CONFIG.SCRIPT_BUNDLES.filter(function(bundle) {
+      // Make array of files lowercase (case insensitive)
+      var lowerCaseFiles = bundle.files.map(function(f) {
+        return f.toLowerCase();
+      });
+
       // Bundle contains the file
-      if(bundle.files.indexOf(file) >= 0) {
+      if(lowerCaseFiles.indexOf(file) >= 0) {
         return true;
       }
 
@@ -48,7 +53,6 @@ module.exports = function(CONFIG, gulp) {
       return gulp.src(files)
         .pipe(gulpif(doLint, jshint(CONFIG.JSHINT_OPTIONS)))
         .pipe(gulpif(doLint, jshint.reporter('jshint-stylish')))
-        .pipe(jshint.reporter('jshint-stylish'))
         .pipe(sourcemaps.init())
         .pipe(concat(bundle.dest))
         .pipe(uglify(CONFIG.UGLIFY_OPTIONS))
@@ -74,10 +78,13 @@ module.exports = function(CONFIG, gulp) {
     gulp.watch(src).on('change', function(filePath) {
       // Make sure the file path is relative to scripts folder
       var scriptFolderPath = path.join(CONFIG.PATHS.SRC, CONFIG.PATHS.SCRIPTS, '/');
-      var file = filePath.replace(scriptFolderPath, '');
+      var file = filePath.replace(scriptFolderPath, '')
+
+      // Make case insensitive
+      var fileLowerCase = file.toLowerCase();
 
       // Build all bundles that contain the changed file
-      return buildBundles(find(file));
+      return buildBundles(find(fileLowerCase));
     });
     cb();
   });
