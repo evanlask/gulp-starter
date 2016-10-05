@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/evanlask/gulp-starter#readme",
   "engines": {
-    "node": ">=0.12.15"
+    "node": ">=4.6.0"
   },
   "devDependencies": {
     "browser-sync": "2.16.0",
